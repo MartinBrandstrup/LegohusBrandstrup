@@ -6,6 +6,7 @@
 package Logic;
 
 import Data.DTO.UserDTO;
+import Data.LoginException;
 import Data.OrderDAO;
 import Data.UserDAO;
 
@@ -31,11 +32,9 @@ public class LogicController
         return instance;
     }
     
-    public UserDTO login()
+    public UserDTO login(String password, String email) throws LoginException
     {
-        
-        
-        return new UserDTO();
+        return userMapper.login(password, email);
     }
             
 }
