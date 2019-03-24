@@ -1,4 +1,4 @@
-package Presentation.commands;
+package Presentation;
 
 import Logic.LogicController;
 import Presentation.Command;

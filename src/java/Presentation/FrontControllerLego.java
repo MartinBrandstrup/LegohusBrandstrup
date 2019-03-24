@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 {
     "/FrontController"
 })
-public class FrontController extends HttpServlet
+public class FrontControllerLego extends HttpServlet
 {
 
     private final LogicController ctrl = LogicController.getInstance();
@@ -44,16 +44,15 @@ public class FrontController extends HttpServlet
             request.setAttribute("message", ce.getMessage());
             RequestDispatcher dispatcher = request.getRequestDispatcher(ce.getTarget());
             dispatcher.forward(request, response);
-        } catch (Exception e)
+        } catch (Exception ex)
         {
             PrintWriter out = response.getWriter();
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("  <head><title>PANIC Page</title></head>");
             out.println("  <body>");
-            out.println("    <h3>" + e.getMessage() + "</h3><hr/>");
+            out.println("    <h3>" + ex.getMessage() + "</h3><hr/>");
             out.println("    <pre>");
-            e.printStackTrace(out); // Don't do this in production code!
             out.print("</pre>");
             out.println("  </body>");
             out.println("</html>");
