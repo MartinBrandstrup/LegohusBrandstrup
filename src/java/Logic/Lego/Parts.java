@@ -3,16 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logic;
+package Logic.Lego;
 
 /**
  *
- * @author Martin Brandstrup
+ * @author Freiden
  */
-public class BillCalculator
+public class Parts
 {
-    public calculate()
-    {
-        
-    }
+    
 }

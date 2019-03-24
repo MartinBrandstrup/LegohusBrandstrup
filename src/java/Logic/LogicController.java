@@ -12,14 +12,15 @@ import Data.UserDAO;
 
 /**
  * Singleton used in FrontController
+ *
  * @author Martin Brandstrup
  */
 public class LogicController
 {
-    
+
     private final OrderDAO orderMapper = OrderDAO.getInstance();
     private final UserDAO userMapper = UserDAO.getInstance();
-    
+
     private static LogicController instance = null;
 
     private LogicController()
@@ -28,13 +29,15 @@ public class LogicController
 
     public synchronized static LogicController getInstance()
     {
-        if (instance == null) instance = new LogicController();
+        if (instance == null)
+        {
+            instance = new LogicController();
+        }
         return instance;
     }
-    
+
     public UserDTO login(String password, String email) throws LoginException
     {
         return userMapper.login(password, email);
     }
-            
 }
