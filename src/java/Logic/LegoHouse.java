@@ -9,7 +9,7 @@ package Logic;
  *
  * @author Martin Brandstrup
  */
-public class LegoHouseCalculator
+public class LegoHouse
 {
 
     private int total1x2;
@@ -20,7 +20,7 @@ public class LegoHouseCalculator
     private int width;
     private int height;
 
-    public LegoHouseCalculator(int length, int width, int height) throws IllegalArgumentException
+    public LegoHouse(int length, int width, int height) throws IllegalArgumentException
     {
         if (height < 1 || length < 5 || width < 5)
         {
