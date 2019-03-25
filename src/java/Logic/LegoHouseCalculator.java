@@ -35,37 +35,59 @@ public class LegoHouseCalculator
 
     private void calculateBill()
     {
-        int modulus = 0;
         int tempLength = length - 4; //-4 to avoid counting corners twice
         int tempWidth = width;
-        int length4x2;
-        int length2x2;
-        int length2x1;
-        int width4x2;
-        int width2x2;
-        int width1x2;
+
+        int length1x2 = -1;
+        int length2x2 = -1;
+        int length4x2 = -1;
+
+        int width1x2 = -1;
+        int width2x2 = -1;
+        int width4x2 = -1;
 
         if (tempLength / 4 > 0)
         {
             length4x2 = tempLength / 4;
+            tempLength = tempLength % 4;
         }
 
-        this.total1x2 = 0 * height;
-        this.total2x2 = 0 * height;
-        this.total4x2 = 0 * height;
+        if (tempLength / 2 > 0)
+        {
+            length2x2 = tempLength / 2;
+            tempLength = tempLength % 2;
+            length1x2 = tempLength;
+        }
+
+        if (tempWidth / 4 > 0)
+        {
+            width4x2 = tempWidth / 4;
+            tempWidth = tempWidth % 4;
+        }
+
+        if (tempWidth / 2 > 0)
+        {
+            width2x2 = tempWidth / 2;
+            tempWidth = tempWidth % 2;
+            width1x2 = tempWidth;
+        }
+
+        this.total1x2 = (width1x2 + length1x2) * height;
+        this.total2x2 = (width2x2 + length2x2) * height;
+        this.total4x2 = (width4x2 + length4x2) * height;
     }
 
-    public int getOnex2()
+    public int getTotal1x2()
     {
         return total1x2;
     }
 
-    public int getTwox2()
+    public int getTotal2x2()
     {
         return total2x2;
     }
 
-    public int getFourx2()
+    public int getTotal4x2()
     {
         return total4x2;
     }
