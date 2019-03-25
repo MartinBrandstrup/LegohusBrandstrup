@@ -38,7 +38,7 @@ public class OrderDAO
         return instance;
     }
 
-    public List<OrderDTO> getAllOrders()
+    public List<OrderDTO> getAllOrders() throws DataException
     {
         String query
                 = "SELECT * "
@@ -63,12 +63,13 @@ public class OrderDAO
         } catch (SQLException ex)
         {
             System.out.println("Error in OrderDAO.getAllOrders()\n" + ex.getErrorCode());
+            throw new DataException("Error in OrderDAO.getAllOrders()\n");
         }
 
         return orderList;
     }
 
-    public List<OrderDTO> getCustomerOrders(int customerId)
+    public List<OrderDTO> getCustomerOrders(int customerId) throws DataException
     {
         String query
                 = "SELECT * "
@@ -94,12 +95,13 @@ public class OrderDAO
         } catch (SQLException ex)
         {
             System.out.println("Error in OrderDAO.getCustomerOrders()\n" + ex.getErrorCode());
+            throw new DataException("Error in OrderDAO.getCustomerOrders()\n");
         }
 
         return orderList;
     }
 
-    public OrderDTO getOrder(int orderId)
+    public OrderDTO getOrder(int orderId) throws DataException
     {
         String query
                 = "SELECT * "
@@ -131,12 +133,13 @@ public class OrderDAO
         } catch (SQLException ex)
         {
             System.out.println("Error in OrderDAO.getOrder(int orderId)\n" + ex.getErrorCode());
+            throw new DataException("Error in OrderDAO.getOrder(int orderId)\n");
         }
 
         return order;
     }
 
-    public void persistOrder(OrderDTO order)
+    public void persistOrder(OrderDTO order) throws DataException
     {
         try
         {
@@ -146,7 +149,7 @@ public class OrderDAO
             String query
                     = "INSERT INTO `Order`(`user_id`, `length`, `width`, `height`, `order_receive_date`, `order_status`, `order_send_date`) "
                     + "VALUES (?, ?, ?, ?, ?, DEFAULT, NULL);";
-            
+
 //                    + "VALUES "
 //                    + "(" + order.getCustomerId()
 //                    + ", " + order.getLength()
@@ -154,9 +157,8 @@ public class OrderDAO
 //                    + ", " + order.getHeight()
 //                    + ", '" + date + "', DEFAULT, NULL);";
 //            int result = DBConnector.getConnection().createStatement().executeUpdate(query);
-
             PreparedStatement ps = con.prepareStatement(query);
-            
+
             ps.setInt(1, order.getCustomerId());
             ps.setInt(2, order.getLength());
             ps.setInt(3, order.getWidth());
@@ -168,10 +170,11 @@ public class OrderDAO
             System.out.println("Error in OrderDAO.createOrder(int customerId, int length, int, width, int height)"
                     + "\nSomething went wrong and the order did not persist"
                     + "\n" + ex.getErrorCode());
+            throw new DataException("Error in OrderDAO.createOrder(int customerId, int length, int, width, int height)");
         }
     }
 
-    public void markOrderAsSent(int orderId)
+    public void markOrderAsSent(int orderId) throws DataException
     {
         try
         {
@@ -188,6 +191,7 @@ public class OrderDAO
         } catch (SQLException ex)
         {
             System.out.println("Error in OrderDAO.markOrderAsSent(int orderId)\n" + ex.getErrorCode());
+            throw new DataException("Error in OrderDAO.markOrderAsSent(int orderId)\n");
         }
     }
 
