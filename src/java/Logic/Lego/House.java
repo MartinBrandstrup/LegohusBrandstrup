@@ -7,9 +7,11 @@ package Logic.Lego;
 
 /**
  *
- * @author Freiden
+ * @author Martin Brandstrup
  */
 public class House
 {
-    
+    private int onex2;
+    private int twox2;
+    private int fourx2;
 }
