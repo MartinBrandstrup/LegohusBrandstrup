@@ -72,9 +72,9 @@ public class LegoHouse
             width1x2 = tempWidth;
         }
 
-        this.total1x2 = (width1x2 + length1x2) * height;
-        this.total2x2 = (width2x2 + length2x2) * height;
-        this.total4x2 = (width4x2 + length4x2) * height;
+        this.total1x2 = (width1x2 + length1x2) * 2 * height;
+        this.total2x2 = (width2x2 + length2x2) * 2 * height;
+        this.total4x2 = (width4x2 + length4x2) * 2 * height;
     }
 
     public int getTotal1x2()
